@@ -1,10 +1,13 @@
 class LoginPage {
-  visitar() {
+  visit() {
     cy.visit('https://serasa.dev/entrar?product=portal&redirectUrl=%2Farea-cliente%2F');
   }
 
   preencherCPF(cpf) {
     cy.get('input[name="cpf"]').type(cpf);
+  }
+
+  clicarContinuar() {
     cy.get('button.btn-submit').click();
   }
 
@@ -16,15 +19,16 @@ class LoginPage {
     cy.get('#current-password').type(senha);
   }
 
-  enviar() {
+  clicarEntrar() {
     cy.get('button.btn-submit').click();
   }
 
   login(cpf, senha) {
     this.preencherCPF(cpf);
+    this.clicarContinuar();
     this.clicarEntrarComSenha();
     this.preencherSenha(senha);
-    this.enviar();
+    this.clicarEntrar();
   }
 }
 
