@@ -1,34 +1,42 @@
-import LoginPage from '../../pages/loginPage';
+import LoginPage from '../../pages/login/loginPage';
+import GatilhosPage from '../../pages/gatilhos/gatilhos';
 
 describe('Gatilhos', () => {
   beforeEach(() => {
-    LoginPage.visitar(); // Acessa a página de login
-    LoginPage.login('04072506036', 'Homolog135!'); // Executa o login
+    LoginPage.visit();
+    LoginPage.login('12644194067', 'Teste1010!');
+  });
 
+  it('gatilho home pedir cartão de crédito', () => {
+    GatilhosPage.clicarPedirCartao();
+    cy.contains('Mais detalhes').should('be.visible');
+    cy.screenshot('Mais detalhes');
+  });
 
+  it('gatilho home pedir empréstimo', () => {
+    GatilhosPage.clicarPedirEmprestimo();
+    cy.contains('Alterar simulação').should('be.visible'); 
+    cy.screenshot('Alterar simulação');
   });
- 
-  it('deve redirecionar para o hall de cartão de crédito', () => {
-    cy.get('[data-testid="icon-credit-card"]').should('be.visible').click();
-    cy.url().should('include', '/area-cliente/solucoes/ofertas-credito?grouper=credit-card-hall');
-    cy.contains('Cartão de crédito').should('be.visible'); 
- 
+
+  it('gatilho serviço cartões e empréstimos', () => {
+    GatilhosPage.clicarServicos();
+    GatilhosPage.clicarCartoesEmprestimos();
+    cy.contains('Pedir cartão').should('be.visible');
+    cy.screenshot('Pedir cartão')
   });
- 
-  it('deve redirecionar para o hall de empréstimo', () => {
-    cy.get('[data-testid="icon-request-credit"]').should('be.visible').click();
-    cy.url().should('include', '/area-cliente/solucoes/ofertas-credito?grouper=loan-hall');
-    cy.contains('Pedir empréstimo').should('be.visible'); 
+
+  it('gatilho serviços acompanhar meus pedidos', () => {
+    GatilhosPage.clicarServicos();
+    GatilhosPage.clicarMeusPedidos();
+    cy.contains('Detalhes').should('be.visible');
   });
- 
-  it('Gatilho serviço cartoes e emprestimo', () => {
-    cy.get('a[href="/area-cliente/solucoes"]').click();
-    cy.contains('div.content', 'flex').click();
-    cy.get('button.card__main-btn').contains('Pedir cartão').should('be.visible');
+
+  it('gatilho dívidas Ver todas as ofertas', () => {
+    GatilhosPage.clicarCentralDividas();
   });
- 
-  it('deve redirecionar para a página de acompanhar meus pedidos', () => {
-  
-});
- 
+
+  it('gatilho dívidas simule empréstimo de até 150 mil', () => {
+    GatilhosPage.clicarCentralDividas();
+  });
 });

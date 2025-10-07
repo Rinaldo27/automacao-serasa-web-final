@@ -1,13 +1,12 @@
-
 import LoginPage from '../../pages/loginPage';
 
 describe('Login Serasa', () => {
   beforeEach(() => {
-    LoginPage.visitar();
+    LoginPage.visit();
   });
 
-  it('Login com Page Object', () => {
-    LoginPage.login('04072506036', 'Homolog135!');
+  it('deve logar com CPF válido e acessar a área do cliente', () => {
+    LoginPage.login('12644194067', 'Teste1010!');
+    cy.contains('Oi, Validação').should('be.visible');
   });
-
-})
+});
