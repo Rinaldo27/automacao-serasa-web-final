@@ -15,8 +15,8 @@ describe('Gatilhos', () => {
 
   it('gatilho home pedir empréstimo', () => {
     GatilhosPage.clicarPedirEmprestimo();
-    cy.contains('Alterar simulação').should('be.visible'); 
-    cy.screenshot('Alterar simulação');
+    cy.contains('Você simulou').should('be.visible'); 
+    cy.screenshot('Você simulou');
   });
 
   it('gatilho serviço cartões e empréstimos', () => {
@@ -28,15 +28,24 @@ describe('Gatilhos', () => {
 
   it('gatilho serviços acompanhar meus pedidos', () => {
     GatilhosPage.clicarServicos();
-    GatilhosPage.clicarMeusPedidos();
+    cy.get('a[href*="meus-pedidos"]') 
+     .invoke('removeAttr', 'target') 
+     .click();
     cy.contains('Detalhes').should('be.visible');
+    cy.screenshot('Meus pedidos')
   });
+  
 
   it('gatilho dívidas Ver todas as ofertas', () => {
     GatilhosPage.clicarCentralDividas();
+    cy.contains('Ver todas as ofertas').click();
+    cy.contains('Pedir cartão').should('be.visible');
+
   });
 
   it('gatilho dívidas simule empréstimo de até 150 mil', () => {
     GatilhosPage.clicarCentralDividas();
+    cy.contains('Simule empréstimos de até').click()
+    cy.contains('Pedir emprestimo').should('be.visible'); 
   });
 });
