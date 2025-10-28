@@ -11,10 +11,6 @@ class LoginPage {
     cy.get('button.btn-submit').click();
   }
 
-  clicarEntrarComSenha() {
-    cy.contains('Entrar com senha').click();
-  }
-
   preencherSenha(senha) {
     cy.get('#current-password').type(senha);
   }
@@ -26,7 +22,6 @@ class LoginPage {
   login(cpf, senha) {
     this.preencherCPF(cpf);
     this.clicarContinuar();
-    this.clicarEntrarComSenha();
     this.preencherSenha(senha);
     this.clicarEntrar();
   }

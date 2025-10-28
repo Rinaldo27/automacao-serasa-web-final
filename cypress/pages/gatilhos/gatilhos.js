@@ -1,7 +1,7 @@
 class GatilhosPage {
 
   clicarPedirCartao() {
-    cy.get('[data-testid="icon-credit-card"]').parents('a').click();
+     cy.get('[aria-label="Ver ofertas de cartão de crédito"]').click()
   }
 
   clicarPedirEmprestimo() {
