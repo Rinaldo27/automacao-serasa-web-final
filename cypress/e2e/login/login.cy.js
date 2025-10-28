@@ -1,4 +1,4 @@
-import LoginPage from '../../pages/loginPage';
+import LoginPage from '../../pages/login/loginPage';
 
 describe('Login Serasa', () => {
   beforeEach(() => {
@@ -6,7 +6,7 @@ describe('Login Serasa', () => {
   });
 
   it('deve logar com CPF válido e acessar a área do cliente', () => {
-    LoginPage.login('12644194067', 'Teste1010!');
-    cy.contains('Oi, Validação').should('be.visible');
+    LoginPage.login('77681791027', 'Jr211294!');
+    cy.contains('Oi, Rinaldo').should('be.visible');
   });
 });

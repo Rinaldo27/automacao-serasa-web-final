@@ -4,29 +4,29 @@ import GatilhosPage from '../../pages/gatilhos/gatilhos';
 describe('Gatilhos', () => {
   beforeEach(() => {
     LoginPage.visit();
-    LoginPage.login('12644194067', 'Teste1010!');
+    LoginPage.login('77681791027', 'Jr211294!');
   });
 
-  it('gatilho home pedir cartão de crédito', () => {
+  it('Gatilho home pedir cartão de crédito', () => {
     GatilhosPage.clicarPedirCartao();
-    cy.contains('Mais detalhes').should('be.visible');
-    cy.screenshot('Mais detalhes');
+    cy.contains('Filtrar').should('be.visible');
+    cy.screenshot('Filtrar');
   });
 
-  it('gatilho home pedir empréstimo', () => {
+  it('Gatilho home pedir empréstimo', () => {
     GatilhosPage.clicarPedirEmprestimo();
     cy.contains('Você simulou').should('be.visible'); 
     cy.screenshot('Você simulou');
   });
 
-  it('gatilho serviço cartões e empréstimos', () => {
+  it('Gatilho serviço cartões e empréstimos', () => {
     GatilhosPage.clicarServicos();
     GatilhosPage.clicarCartoesEmprestimos();
     cy.contains('Pedir cartão').should('be.visible');
     cy.screenshot('Pedir cartão')
   });
 
-  it('gatilho serviços acompanhar meus pedidos', () => {
+  it('Gatilho serviços acompanhar meus pedidos', () => {
     GatilhosPage.clicarServicos();
     cy.get('a[href*="meus-pedidos"]') 
      .invoke('removeAttr', 'target') 
@@ -34,16 +34,15 @@ describe('Gatilhos', () => {
     cy.contains('Detalhes').should('be.visible');
     cy.screenshot('Meus pedidos')
   });
-  
 
-  it('gatilho dívidas Ver todas as ofertas', () => {
+  it('Gatilho dívidas Ver todas as ofertas', () => {
     GatilhosPage.clicarCentralDividas();
     cy.contains('Ver todas as ofertas').click();
     cy.contains('Pedir cartão').should('be.visible');
 
   });
 
-  it('gatilho dívidas simule empréstimo de até 150 mil', () => {
+  it('Gatilho dívidas simule empréstimo de até 150 mil', () => {
     GatilhosPage.clicarCentralDividas();
     cy.contains('Simule empréstimos de até').click()
     cy.contains('Pedir emprestimo').should('be.visible'); 
