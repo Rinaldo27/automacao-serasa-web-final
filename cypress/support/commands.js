@@ -1,6 +1,6 @@
 
 
-Cypress.Commands.add('loginSerasa', (cpf, senha) => {
+Cypress.Commands.add('login', (cpf, senha) => {
   cy.get('input[name="cpf"]').type(cpf);
   cy.get('button.btn-submit').click();
   cy.contains('Entrar com senha').click();
