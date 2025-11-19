@@ -1,8 +1,5 @@
-class LoginPage {
-  visit() {
-    cy.visit('https://serasa.dev/entrar?product=portal&redirectUrl=%2Farea-cliente%2F');
-  }
-
+class loginPage {
+  
   preencherCPF(cpf) {
     cy.get('input[name="cpf"]').type(cpf);
   }
@@ -27,4 +24,4 @@ class LoginPage {
   }
 }
 
-export default new LoginPage();
+export default new loginPage();
