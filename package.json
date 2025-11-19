@@ -4,8 +4,7 @@
   "main": "index.js",
   "scripts": {
     "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "test": "npx cypress run --env split=true"
+    "cy:run": "cypress run"
   },
   
   "keywords": [],
